@@ -165,12 +165,11 @@ li { margin-bottom: 6px; }
 .feature p { margin: 0; font-size: 14px; color: var(--text-2); }
 
 /* 표 — 개인정보처리방침의 자료 흐름에 쓴다 */
-.table-scroll { overflow-x: auto; margin: 0 0 18px; }
+.table-scroll { margin: 0 0 18px; }
 
 table {
   border-collapse: collapse;
   width: 100%;
-  min-width: 560px;
   font-size: 14px;
 }
 
@@ -182,6 +181,56 @@ th, td {
 }
 
 th { background: var(--surface-2); font-weight: 600; }
+
+/* 권한 이름처럼 긴 코드가 칸을 밀어내지 않게 한다. */
+td code, th code { overflow-wrap: anywhere; }
+
+/*
+ * **좁은 화면에서는 표를 세로로 푼다.**
+ *
+ * 처음에는 `min-width: 560px` 에 가로 스크롤로 두었는데, 폰에서 열어
+ * 보니 둘째 칸이 화면 밖으로 잘려 나갔다. 가로로 밀 수는 있지만
+ * **밀 수 있다는 것을 알 수가 없어** 사실상 못 읽는다.
+ *
+ * 개인정보처리방침은 심사자와 사용자가 폰으로 읽는 문서다. 읽히지
+ * 않으면 없는 것과 같다.
+ *
+ * 각 칸이 제 이름을 `data-label` 로 달고 있어, 세로로 풀어도 어느
+ * 열의 값인지 알 수 있다.
+ */
+@media (max-width: 700px) {
+  .table-scroll table,
+  .table-scroll tbody,
+  .table-scroll tr,
+  .table-scroll td { display: block; width: 100%; }
+
+  .table-scroll thead { display: none; }
+
+  .table-scroll tr {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .table-scroll td {
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 14px;
+  }
+
+  .table-scroll tr td:last-child { border-bottom: none; }
+
+  .table-scroll td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-3);
+    margin-bottom: 2px;
+  }
+}
 
 /* ── 단추 ───────────────────────────────────────── */
 

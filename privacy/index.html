@@ -53,19 +53,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>RECORD_AUDIO</code></td>
-            <td>마이크로 들어오는 소리의 음압과 주파수를 실시간으로 계산합니다. 사용자가 「소리도 담기」를 선택한 경우에만 오디오 파일로 저장합니다.</td>
-            <td>필수</td>
+            <td data-label="권한"><code>RECORD_AUDIO</code></td>
+            <td data-label="쓰는 곳">마이크로 들어오는 소리의 음압과 주파수를 실시간으로 계산합니다. 사용자가 「소리도 담기」를 선택한 경우에만 오디오 파일로 저장합니다.</td>
+            <td data-label="필수 여부">필수</td>
           </tr>
           <tr>
-            <td><code>FOREGROUND_SERVICE</code><br><code>FOREGROUND_SERVICE_MICROPHONE</code></td>
-            <td>화면이 꺼지거나 다른 앱으로 이동해도 측정이 끊기지 않도록 합니다.</td>
-            <td>측정 중</td>
+            <td data-label="권한"><code>FOREGROUND_SERVICE</code><br><code>FOREGROUND_SERVICE_MICROPHONE</code></td>
+            <td data-label="쓰는 곳">화면이 꺼지거나 다른 앱으로 이동해도 측정이 끊기지 않도록 합니다.</td>
+            <td data-label="필수 여부">측정 중</td>
           </tr>
           <tr>
-            <td><code>POST_NOTIFICATIONS</code></td>
-            <td>측정이 진행 중임을 알림으로 표시합니다.</td>
-            <td>선택</td>
+            <td data-label="권한"><code>POST_NOTIFICATIONS</code></td>
+            <td data-label="쓰는 곳">측정이 진행 중임을 알림으로 표시합니다.</td>
+            <td data-label="필수 여부">선택</td>
           </tr>
         </tbody>
       </table>
@@ -85,34 +85,34 @@
         </thead>
         <tbody>
           <tr>
-            <td>측정 기록</td>
-            <td>측정 시각·기기 이름·보정값·가중치 설정·음압 요약(Leq/MIN/MAX/순간최고)·시간별 값·사용자가 적은 메모</td>
-            <td>앱 전용 저장소</td>
-            <td>없음</td>
+            <td data-label="항목">측정 기록</td>
+            <td data-label="내용">측정 시각·기기 이름·보정값·가중치 설정·음압 요약(Leq/MIN/MAX/순간최고)·시간별 값·사용자가 적은 메모</td>
+            <td data-label="저장 위치">앱 전용 저장소</td>
+            <td data-label="외부 전송">없음</td>
           </tr>
           <tr>
-            <td>오디오 녹음</td>
-            <td><strong>기록을 시작할 때마다 물어보고, 사용자가 「소리도 담기」를 고른 경우에만</strong> 저장합니다(m4a 또는 WAV).</td>
-            <td>앱 전용 저장소</td>
-            <td>없음</td>
+            <td data-label="항목">오디오 녹음</td>
+            <td data-label="내용"><strong>기록을 시작할 때마다 물어보고, 사용자가 「소리도 담기」를 고른 경우에만</strong> 저장합니다(m4a 또는 WAV).</td>
+            <td data-label="저장 위치">앱 전용 저장소</td>
+            <td data-label="외부 전송">없음</td>
           </tr>
           <tr>
-            <td>보정(Calibration) 설정</td>
-            <td>기기별 보정값, 교정 프로파일, 사용자가 불러온 마이크 주파수 응답 파일</td>
-            <td>앱 전용 저장소</td>
-            <td>없음</td>
+            <td data-label="항목">보정(Calibration) 설정</td>
+            <td data-label="내용">기기별 보정값, 교정 프로파일, 사용자가 불러온 마이크 주파수 응답 파일</td>
+            <td data-label="저장 위치">앱 전용 저장소</td>
+            <td data-label="외부 전송">없음</td>
           </tr>
           <tr>
-            <td>앱 설정</td>
-            <td>가중치·응답 속도·Leq 구간·입력 기기·구간별 권장 범위 등</td>
-            <td>앱 전용 저장소</td>
-            <td>없음</td>
+            <td data-label="항목">앱 설정</td>
+            <td data-label="내용">가중치·응답 속도·Leq 구간·입력 기기·구간별 권장 범위 등</td>
+            <td data-label="저장 위치">앱 전용 저장소</td>
+            <td data-label="외부 전송">없음</td>
           </tr>
           <tr>
-            <td>내보내기 파일</td>
-            <td>사용자가 공유를 누를 때 CSV를 임시로 만듭니다.</td>
-            <td>앱 전용 캐시</td>
-            <td>사용자가 고른 앱으로만</td>
+            <td data-label="항목">내보내기 파일</td>
+            <td data-label="내용">사용자가 공유를 누를 때 CSV를 임시로 만듭니다.</td>
+            <td data-label="저장 위치">앱 전용 캐시</td>
+            <td data-label="외부 전송">사용자가 고른 앱으로만</td>
           </tr>
         </tbody>
       </table>
