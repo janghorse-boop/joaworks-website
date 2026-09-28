@@ -1,3 +1,7 @@
 .DS_Store
 Thumbs.db
 node_modules/
+
+# 받은 지시서를 두는 곳. 저장소에 올리지 않는다 —
+# 참고할 내용은 docs/ 로 옮겨 정리해서 커밋한다.
+inbox/

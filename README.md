@@ -107,16 +107,27 @@ node -e "const fs=require('fs'),g=require('glob');" 2>/dev/null || true
   고친다.** 실제와 다른 방침을 두면 Google Play 정책 위반이다.
 - 제품 페이지에 **아직 없는 기능을 적지 않는다**(지시서 §6).
 
-### 지금 방침이 기대고 있는 사실 (2026-09-28 소스 확인)
+### 지금 방침이 기대고 있는 사실
+
+**기준: SELAH-RTA `d869fdf` (2026-09-28) · `:app:processReleaseMainManifest`
+병합 결과와 소스 확인.** 자세한 근거와 확인 범위는
+[docs/implementation-verification.md](docs/implementation-verification.md).
 
 | 확인한 것 | 결과 |
 |---|---|
-| 선언된 권한 | `RECORD_AUDIO` · `FOREGROUND_SERVICE` · `FOREGROUND_SERVICE_MICROPHONE` · `POST_NOTIFICATIONS` |
+| 배포 기준 | `kr.joa.selahrta` · 0.1.0(versionCode 1) · minSdk 26 / targetSdk 36 · **스토어 미게시** |
+| release 병합 권한 | `RECORD_AUDIO` · `FOREGROUND_SERVICE` · `FOREGROUND_SERVICE_MICROPHONE` · `POST_NOTIFICATIONS` · `kr.joa.selahrta.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`(AndroidX 가 넣는 서명 수준) |
 | 인터넷 권한 | **없음**(라이브러리를 합친 매니페스트에도 없음) |
 | 네트워크 코드 | 없음 |
+| 백업 | `allowBackup="false"` — 별도 규칙 파일·백업 에이전트 없음 |
 | Analytics · Crash 보고 | 없음 |
 | 결제 · 구독 | 없음 |
 | 제3자 SDK | 없음(AndroidX/Compose 와 자체 `dsp` 모듈뿐) |
-| 저장 위치 | `filesDir` · `cacheDir` — 앱 전용, 삭제 시 함께 사라짐 |
+| 저장 위치 | `files/sessions` · `files/profiles` · `files/curves` · `cache/export` |
+| 공유 | CSV + (있으면) 오디오를 FileProvider 로, **그 파일에만** 읽기 권한 |
 
 **이 중 하나라도 바뀌면 `privacy/index.html` 을 고쳐야 한다.**
+
+> **「네 가지가 전부」라고 쓰지 않는다.** release 병합본에는 AndroidX 가
+> 넣는 다섯째 권한이 있다. 앱 소스만 보고 개수를 단정했다가 틀렸다 —
+> 개수는 병합 매니페스트에서만 확인한다.
