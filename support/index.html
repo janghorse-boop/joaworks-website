@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH RTA Support | JOAWORKS</title>
+<meta name="description" content="SELAH RTA 사용 안내, 마이크·USB 오디오·보정에 관한 도움말과 문의처.">
+<link rel="canonical" href="https://DOMAIN_PLACEHOLDER/support/">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../">JOAWORKS</a>
+    <nav class="site">
+      <a href="../">Home</a>
+      <a href="../selah-rta/">Products</a>
+      <a href="../#about">About</a>
+      <a href="../support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <h1>SELAH RTA Support</h1>
+    <p class="lead muted">사용 안내와 자주 묻는 질문</p>
+
+    <h2>앱 소개</h2>
+    <p>
+      SELAH RTA는 안드로이드 기기에서 실시간으로 음압과 주파수 균형을 재는
+      오디오 분석 애플리케이션입니다. 휴대폰 내장 마이크만으로도 동작하며,
+      측정용 마이크와 USB 오디오 인터페이스를 연결하면 정확도가 올라갑니다.
+    </p>
+
+    <h2>기본 사용 안내</h2>
+    <ol>
+      <li>앱을 열고 <strong>마이크 권한</strong>을 허용합니다.</li>
+      <li>첫 화면에서 <strong>어느 마이크로 재는지</strong> 확인합니다.</li>
+      <li><strong>측정 시작</strong>을 누릅니다.</li>
+      <li>필요하면 <strong>권장 범위 구간</strong>을 더해 지금 값과 견줍니다.</li>
+      <li>남기려면 <strong>이 측정을 기록하기</strong>를 누릅니다. 소리를 함께 담을지 그때 물어봅니다.</li>
+      <li>기록 화면에서 리포트를 보고 CSV·소리 파일을 내보낼 수 있습니다.</li>
+    </ol>
+
+    <h2>지원되는 Android 환경</h2>
+    <ul>
+      <li>Android 스마트폰 · 태블릿</li>
+      <li>마이크 권한 필요</li>
+      <li>측정 중 화면이 꺼져도 이어지도록 전경 서비스를 사용합니다</li>
+    </ul>
+
+    <h2>마이크 안내</h2>
+    <ul>
+      <li>
+        <strong>보정하지 않은 값은 참고용입니다.</strong> 휴대폰 마이크의
+        감도는 기기마다 다르고, 앱은 그 값을 모릅니다. 기준 소음계가 있으면
+        <strong>설정 → 교정 마법사</strong>로 맞추십시오.
+      </li>
+      <li>
+        <strong>휴대폰 케이스가 마이크 구멍을 막을 수 있습니다.</strong>
+        후면 마이크를 쓸 때 특히 그렇습니다. 케이스가 막은 것을 마이크의
+        특성으로 오해하지 않도록 벗기고 비교해 보십시오.
+      </li>
+      <li>
+        <strong>보정값은 기기마다 따로 저장됩니다.</strong> 내장 마이크와
+        USB 마이크의 감도는 수십 dB 차이가 나므로, 기기를 바꾸면 그 기기의
+        보정으로 바뀝니다.
+      </li>
+    </ul>
+
+    <h2>USB 오디오 인터페이스 안내</h2>
+    <ul>
+      <li>
+        <strong>ASIO는 안드로이드에 없습니다.</strong> 윈도우 전용
+        규격이며 필요하지도 않습니다. 안드로이드는 <strong>USB Audio
+        Class</strong>를 쓰므로, 제품 설명에 <strong>class compliant</strong>
+        (또는 「드라이버 불필요」)라고 적힌 인터페이스는 꽂으면 그대로
+        인식됩니다.
+      </li>
+      <li>
+        <strong>전용 드라이버가 반드시 필요한 제품은 지원되지 않습니다.</strong>
+        앱 설정으로 풀 수 있는 문제가 아닙니다.
+      </li>
+      <li>
+        <strong>전원을 확인하십시오.</strong> 팬텀 전원(+48V)을 쓰는
+        인터페이스는 휴대폰 배터리만으로 모자랄 수 있습니다. 인식이
+        들락날락하거나 소리가 끊기면 <strong>전원이 공급되는 USB-C 허브</strong>를
+        쓰십시오.
+      </li>
+      <li>
+        <strong>충전 전용 케이블은 안 됩니다.</strong> 데이터가 통하는
+        케이블을 쓰십시오.
+      </li>
+      <li>
+        여러 입력을 주는 기기는 <strong>설정 → 측정 입력 채널</strong>에서
+        잴 채널을 고릅니다. 채널을 섞지 않습니다 — 입력마다 다른 마이크가
+        꽂혀 있을 수 있기 때문입니다.
+      </li>
+    </ul>
+
+    <h2>보정(Calibration) 안내</h2>
+    <ul>
+      <li>
+        <strong>절대 음압 보정</strong>: 기준 소음계나 교정기(94 dB @ 1 kHz)와
+        맞춰 한 값을 정합니다. 설정 → 교정 마법사.
+      </li>
+      <li>
+        <strong>마이크 주파수 응답 보정</strong>: 제조사가 주는 보정 파일
+        (<code>.cal</code> · <code>.frd</code> · <code>.txt</code>)을 불러오면
+        마이크의 주파수 편차를 되돌립니다. 설정 → 주파수 보정.
+      </li>
+      <li>
+        주파수 보정은 <strong>RTA·Spectrum·Spectrogram에 적용</strong>되고,
+        큰 음압 숫자에는 전대역 보정값만 쓰입니다. 앱이 그 한계를 화면에
+        적습니다.
+      </li>
+    </ul>
+
+    <h2>자주 묻는 질문</h2>
+
+    <h3>이 앱을 소음 측정 증거로 쓸 수 있습니까?</h3>
+    <p>
+      <strong>쓸 수 없습니다.</strong> 법정 계량기가 아닙니다. 표시되는 값은
+      참고용입니다.
+    </p>
+
+    <h3>측정한 값이 소음계와 다릅니다.</h3>
+    <p>
+      보정하지 않은 상태라면 당연합니다. 휴대폰 마이크의 감도를 앱이 모르기
+      때문입니다. 교정 마법사로 기준 소음계와 맞춰 보십시오. 또한 가중치가
+      서로 같은지(예: 둘 다 dB(A)) 확인하십시오.
+    </p>
+
+    <h3>측정을 시작하면 잠깐 값이 낮게 나옵니다.</h3>
+    <p>
+      시간가중이 0에서 올라오는 중이라 그렇습니다. Fast는 약 0.4초,
+      Slow는 약 3초입니다. 설정 → 응답 속도에서 바꿀 수 있습니다.
+    </p>
+
+    <h3>녹음 파일은 어디에 저장됩니까?</h3>
+    <p>
+      기기 안 앱 전용 저장소입니다. 다른 앱이 읽을 수 없고
+      <strong>앱을 지우면 함께 사라집니다.</strong> 내보내려면 기록 화면에서
+      보내기를 누르십시오.
+    </p>
+
+    <h3>데이터가 서버로 전송됩니까?</h3>
+    <p>
+      <strong>아닙니다.</strong> 앱은 인터넷 권한을 요청하지 않아 전송 자체가
+      불가능합니다. <a href="../privacy/">개인정보처리방침</a>을 보십시오.
+    </p>
+
+    <h3>기록이 안 보입니다.</h3>
+    <p>
+      기록은 <strong>「이 측정을 기록하기」</strong>를 누른 측정만 남습니다.
+      측정만 하고 기록하지 않으면 남지 않습니다.
+    </p>
+
+    <h2>문의</h2>
+    <p>
+      답변에 며칠이 걸릴 수 있습니다. 기기 모델명, Android 버전, 어떤
+      상황에서 생겼는지를 함께 적어 주시면 빠릅니다.
+    </p>
+    <p>
+      <a class="btn" href="mailto:EMAIL_PLACEHOLDER">EMAIL_PLACEHOLDER</a>
+    </p>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="row"><strong>JOAWORKS</strong></div>
+    <div class="row">
+      <a href="../privacy/">Privacy Policy</a>
+      <a href="../terms/">Terms</a>
+      <a href="../support/">Support</a>
+    </div>
+    <div class="row">Contact: <a href="mailto:EMAIL_PLACEHOLDER">EMAIL_PLACEHOLDER</a></div>
+    <div class="row small">&copy; 2026 JOAWORKS. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

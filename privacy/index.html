@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개인정보처리방침 | JOAWORKS</title>
+<meta name="description" content="JOAWORKS 및 SELAH RTA 개인정보처리방침. SELAH RTA는 인터넷 권한을 요청하지 않으며 모든 데이터는 기기 안에만 저장됩니다.">
+<link rel="canonical" href="https://DOMAIN_PLACEHOLDER/privacy/">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../">JOAWORKS</a>
+    <nav class="site">
+      <a href="../">Home</a>
+      <a href="../selah-rta/">Products</a>
+      <a href="../#about">About</a>
+      <a href="../support/">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <h1>개인정보처리방침</h1>
+    <p class="updated">적용 대상: SELAH RTA (Android) · 최종 수정일: 2026-09-28</p>
+
+    <div class="note">
+      <p>
+        <strong>SELAH RTA는 인터넷 권한(<code>android.permission.INTERNET</code>)을
+        요청하지 않습니다.</strong>
+        앱은 어떤 데이터도 외부로 전송할 수 없습니다. 측정값·기록·녹음 파일은
+        모두 사용자의 기기 안에만 저장됩니다.
+      </p>
+    </div>
+
+    <h2>1. 수집하는 개인정보</h2>
+    <p>
+      JOAWORKS는 SELAH RTA를 통해 <strong>개인정보를 수집하지 않습니다.</strong>
+      이름·이메일·전화번호·계정·위치·광고 식별자를 요구하지 않으며,
+      로그인 기능이 없습니다.
+    </p>
+
+    <h2>2. 앱이 요청하는 권한</h2>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>권한</th><th>쓰는 곳</th><th>필수 여부</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>RECORD_AUDIO</code></td>
+            <td>마이크로 들어오는 소리의 음압과 주파수를 실시간으로 계산합니다. 사용자가 「소리도 담기」를 선택한 경우에만 오디오 파일로 저장합니다.</td>
+            <td>필수</td>
+          </tr>
+          <tr>
+            <td><code>FOREGROUND_SERVICE</code><br><code>FOREGROUND_SERVICE_MICROPHONE</code></td>
+            <td>화면이 꺼지거나 다른 앱으로 이동해도 측정이 끊기지 않도록 합니다.</td>
+            <td>측정 중</td>
+          </tr>
+          <tr>
+            <td><code>POST_NOTIFICATIONS</code></td>
+            <td>측정이 진행 중임을 알림으로 표시합니다.</td>
+            <td>선택</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="small muted">
+      위 네 가지가 앱이 선언한 권한의 전부입니다. 라이브러리를 포함해
+      병합된 매니페스트에도 인터넷 권한은 없습니다.
+    </p>
+
+    <h2>3. 기기에 저장되는 데이터</h2>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>항목</th><th>내용</th><th>저장 위치</th><th>외부 전송</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>측정 기록</td>
+            <td>측정 시각·기기 이름·보정값·가중치 설정·음압 요약(Leq/MIN/MAX/순간최고)·시간별 값·사용자가 적은 메모</td>
+            <td>앱 전용 저장소</td>
+            <td>없음</td>
+          </tr>
+          <tr>
+            <td>오디오 녹음</td>
+            <td><strong>기록을 시작할 때마다 물어보고, 사용자가 「소리도 담기」를 고른 경우에만</strong> 저장합니다(m4a 또는 WAV).</td>
+            <td>앱 전용 저장소</td>
+            <td>없음</td>
+          </tr>
+          <tr>
+            <td>보정(Calibration) 설정</td>
+            <td>기기별 보정값, 교정 프로파일, 사용자가 불러온 마이크 주파수 응답 파일</td>
+            <td>앱 전용 저장소</td>
+            <td>없음</td>
+          </tr>
+          <tr>
+            <td>앱 설정</td>
+            <td>가중치·응답 속도·Leq 구간·입력 기기·구간별 권장 범위 등</td>
+            <td>앱 전용 저장소</td>
+            <td>없음</td>
+          </tr>
+          <tr>
+            <td>내보내기 파일</td>
+            <td>사용자가 공유를 누를 때 CSV를 임시로 만듭니다.</td>
+            <td>앱 전용 캐시</td>
+            <td>사용자가 고른 앱으로만</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      위 데이터는 모두 <strong>앱 전용 저장소</strong>에 있습니다. 다른 앱이
+      읽을 수 없고, <strong>앱을 삭제하면 함께 지워집니다.</strong>
+    </p>
+
+    <h2>4. 데이터 공유</h2>
+    <p>
+      앱은 스스로 데이터를 보내지 않습니다. 사용자가 기록 화면에서
+      <strong>「보내기」를 직접 누른 경우에만</strong> 안드로이드의 공유 기능이
+      열리며, 받을 앱(메신저·메일·파일 관리자 등)은 사용자가 그 자리에서
+      고릅니다. 그 이후의 처리는 사용자가 고른 앱의 정책을 따릅니다.
+    </p>
+
+    <h2>5. 하지 않는 것</h2>
+    <ul>
+      <li>서버 전송 — <strong>인터넷 권한이 없어 불가능합니다</strong></li>
+      <li>광고 및 광고 식별자 수집</li>
+      <li>사용 통계(Analytics) 수집</li>
+      <li>비정상 종료(Crash) 보고 수집</li>
+      <li>제3자 SDK를 통한 데이터 수집</li>
+      <li>클라우드 저장·백업</li>
+      <li>쿠키 및 웹 추적</li>
+      <li>개인정보의 판매 또는 제3자 제공</li>
+    </ul>
+
+    <h2>6. 결제 및 구독</h2>
+    <p>
+      현재 SELAH RTA에는 결제·구독 기능이 없습니다. 향후 도입할 경우
+      이 방침과 <a href="../terms/">이용약관</a>을 먼저 갱신하고, 앱 내에
+      변경 사실을 안내합니다.
+    </p>
+
+    <h2>7. 아동의 개인정보</h2>
+    <p>
+      앱은 개인정보를 수집하지 않으므로 아동의 개인정보도 수집하지 않습니다.
+    </p>
+
+    <h2>8. 사용자의 권리</h2>
+    <p>
+      모든 데이터가 기기 안에만 있으므로, 사용자는 언제든 앱 안에서 기록을
+      삭제하거나 앱을 삭제하여 전부 지울 수 있습니다. JOAWORKS는 해당
+      데이터에 접근할 수 없습니다.
+    </p>
+
+    <h2>9. 방침 변경</h2>
+    <p>
+      이 방침이 바뀌면 이 페이지에 게시하고 최종 수정일을 갱신합니다.
+    </p>
+
+    <h2>10. 문의</h2>
+    <p>
+      JOAWORKS<br>
+      <a href="mailto:EMAIL_PLACEHOLDER">EMAIL_PLACEHOLDER</a>
+    </p>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="row"><strong>JOAWORKS</strong></div>
+    <div class="row">
+      <a href="../privacy/">Privacy Policy</a>
+      <a href="../terms/">Terms</a>
+      <a href="../support/">Support</a>
+    </div>
+    <div class="row">Contact: <a href="mailto:EMAIL_PLACEHOLDER">EMAIL_PLACEHOLDER</a></div>
+    <div class="row small">&copy; 2026 JOAWORKS. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
