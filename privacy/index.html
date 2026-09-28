@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>개인정보처리방침 | JOAWORKS</title>
-<meta name="description" content="JOAWORKS 및 SELAH RTA 개인정보처리방침. SELAH RTA는 인터넷 권한을 요청하지 않으며 모든 데이터는 기기 안에만 저장됩니다.">
+<meta name="description" content="JOAWORKS 개인정보처리방침. SELAH RTA는 측정과 녹음을 기기에서 처리하며 JOAWORKS 서버로 자동 전송하지 않습니다. 고객지원 이메일과 홈페이지 운영의 처리도 함께 안내합니다.">
 <link rel="canonical" href="https://joaworks.com/privacy/">
-<link rel="stylesheet" href="../assets/css/site.css?v=20260928a">
+<link rel="stylesheet" href="../assets/css/site.css?v=20260928b">
 </head>
 <body>
 
@@ -26,150 +26,348 @@
   <div class="wrap">
 
     <h1>개인정보처리방침</h1>
-    <p class="updated">적용 대상: SELAH RTA (Android) · 최종 수정일: 2026-09-28</p>
+    <p class="updated">
+      적용 대상: SELAH RTA (Android) · 고객지원 이메일 · joaworks.com 홈페이지<br>
+      개정일 2026-09-28 · 시행일 2026-09-28 · 버전 1.1
+    </p>
 
     <div class="note">
       <p>
-        <strong>SELAH RTA는 인터넷 권한(<code>android.permission.INTERNET</code>)을
-        요청하지 않습니다.</strong>
-        앱은 어떤 데이터도 외부로 전송할 수 없습니다. 측정값·기록·녹음 파일은
-        모두 사용자의 기기 안에만 저장됩니다.
+        SELAH RTA는 마이크 입력을 <strong>이용자의 기기에서</strong> 분석하고,
+        측정 기록과 설정을 기기에 저장합니다. JOAWORKS는 앱의 측정값과 녹음
+        파일을 자체 서버로 자동 수집하지 않습니다.
+      </p>
+      <p>
+        이용자가 <strong>「보내기」를 실행하면</strong> 그 자리에서 고른 앱이나
+        서비스로 파일이 전달됩니다. 기기 백업·이전의 적용 범위는 아래
+        <a href="#backup">「백업 및 기기 이전」</a>에서, 고객지원 문의와 홈페이지
+        이용 과정의 처리는 <a href="#support">「고객지원 이메일」</a>·
+        <a href="#website">「홈페이지 운영」</a>에서 안내합니다.
       </p>
     </div>
 
-    <h2>1. 수집하는 개인정보</h2>
+    <h2 id="scope">1. 적용 범위와 적용 버전</h2>
+    <p>이 방침은 아래 세 가지에 적용됩니다.</p>
+    <ul>
+      <li>SELAH RTA Android 앱 — 패키지 <code>kr.joa.selahrta</code>, 버전
+        0.1.0(versionCode 1), 지원 Android 8.0(API 26) 이상</li>
+      <li>고객지원 이메일로 받은 문의</li>
+      <li>홈페이지 <code>joaworks.com</code> 이용</li>
+    </ul>
     <p>
-      JOAWORKS는 SELAH RTA를 통해 <strong>개인정보를 수집하지 않습니다.</strong>
-      이름·이메일·전화번호·계정·위치·광고 식별자를 요구하지 않으며,
-      로그인 기능이 없습니다.
+      앱은 아직 Google Play 등 공개 스토어에 게시되지 않았습니다. 스토어에
+      게시할 때에는 그 배포본을 기준으로 이 방침과 스토어의 데이터 보안(Data
+      Safety) 신고 내용을 함께 갱신합니다.
+    </p>
+    <p class="small muted">
+      이 버전의 release 병합 매니페스트에는 <code>android.permission.INTERNET</code>
+      권한이 선언되어 있지 않습니다. 앱이 스스로 네트워크에 접속하지 않는다는
+      뜻이며, 이용자가 직접 실행한 공유나 운영체제의 기능을 통한 전달까지
+      막는다는 뜻은 아닙니다.
     </p>
 
-    <h2>2. 앱이 요청하는 권한</h2>
+    <h2 id="data">2. 앱이 처리하는 데이터와 목적</h2>
+    <p>
+      앱은 마이크 입력과, 이용자가 만든 측정 기록·메모·녹음 및 보정 설정을
+      <strong>기능을 제공하기 위해</strong> 처리합니다. 이 데이터에는 주변
+      사람의 음성 등 개인정보가 포함될 수 있습니다.
+    </p>
+    <p>
+      앱은 회원가입·로그인을 요구하지 않고, 이름·이메일·전화번호·위치·광고
+      식별자를 요구하지 않으며, 위 데이터를 JOAWORKS 서버로 자동 전송하지
+      않습니다.
+    </p>
+
+    <h2 id="permissions">3. 앱이 요청하는 권한</h2>
 
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>권한</th><th>쓰는 곳</th><th>필수 여부</th></tr>
+          <tr><th>권한</th><th>쓰는 곳</th><th>동의 방식</th><th>거부하거나 끄면</th></tr>
         </thead>
         <tbody>
           <tr>
             <td data-label="권한"><code>RECORD_AUDIO</code></td>
-            <td data-label="쓰는 곳">마이크로 들어오는 소리의 음압과 주파수를 실시간으로 계산합니다. 사용자가 「소리도 담기」를 선택한 경우에만 오디오 파일로 저장합니다.</td>
-            <td data-label="필수 여부">필수</td>
+            <td data-label="쓰는 곳">마이크로 들어오는 소리의 음압과 주파수를 실시간으로 계산합니다. 이용자가 「소리도 담기」를 고른 경우에만 오디오 파일로 저장합니다.</td>
+            <td data-label="동의 방식">사용 시점에 기기가 묻습니다</td>
+            <td data-label="거부하거나 끄면">측정과 녹음을 시작할 수 없습니다. 이미 저장된 기록을 열어 보거나 내보내는 데에는 이 권한이 필요하지 않습니다.</td>
           </tr>
           <tr>
             <td data-label="권한"><code>FOREGROUND_SERVICE</code><br><code>FOREGROUND_SERVICE_MICROPHONE</code></td>
-            <td data-label="쓰는 곳">화면이 꺼지거나 다른 앱으로 이동해도 측정이 끊기지 않도록 합니다.</td>
-            <td data-label="필수 여부">측정 중</td>
+            <td data-label="쓰는 곳">측정을 시작하면 화면이 꺼지거나 다른 앱으로 이동해도 <strong>마이크가 계속 켜진 채</strong> 측정이 이어집니다.</td>
+            <td data-label="동의 방식">매니페스트 선언 권한 — 별도의 동의 창이 없습니다</td>
+            <td data-label="거부하거나 끄면">측정은 알림의 「중지」 또는 앱의 중지 단추로 끝냅니다. 중지하면 마이크도 함께 놓습니다.</td>
           </tr>
           <tr>
             <td data-label="권한"><code>POST_NOTIFICATIONS</code></td>
-            <td data-label="쓰는 곳">측정이 진행 중임을 알림으로 표시합니다.</td>
-            <td data-label="필수 여부">선택</td>
+            <td data-label="쓰는 곳">측정이 진행 중임을 알림으로 표시하고, 그 알림에서 바로 중지할 수 있게 합니다.</td>
+            <td data-label="동의 방식">Android 13 이상에서 기기가 묻습니다</td>
+            <td data-label="거부하거나 끄면">측정은 그대로 동작하지만 진행 알림이 보이지 않습니다. 이때는 앱 화면에서 중지하십시오.</td>
+          </tr>
+          <tr>
+            <td data-label="권한"><code>kr.joa.selahrta.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td>
+            <td data-label="쓰는 곳">앱이 쓰는 AndroidX 라이브러리가 빌드 과정에서 자동으로 추가하는, 앱 자신에게만 적용되는 권한입니다.</td>
+            <td data-label="동의 방식">서명 수준 — 이용자에게 묻지 않습니다</td>
+            <td data-label="거부하거나 끄면">해당 없음. 데이터 수집과 관련이 없습니다.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <p class="small muted">
-      위 네 가지가 앱이 선언한 권한의 전부입니다. 라이브러리를 포함해
-      병합된 매니페스트에도 인터넷 권한은 없습니다.
+      위 목록은 이 방침이 적용되는 버전의 release 병합 매니페스트(라이브러리를
+      합친 결과)를 확인한 것입니다. 버전이 바뀌면 이 표도 함께 갱신합니다.
     </p>
 
-    <h2>3. 기기에 저장되는 데이터</h2>
+    <h2 id="stored">4. 기기에 저장되는 데이터</h2>
 
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>항목</th><th>내용</th><th>저장 위치</th><th>외부 전송</th></tr>
+          <tr>
+            <th>항목</th><th>내용</th><th>저장 위치</th>
+            <th>앱의 자동 서버 전송</th><th>보유 종료</th><th>삭제 방법</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
             <td data-label="항목">측정 기록</td>
-            <td data-label="내용">측정 시각·기기 이름·보정값·가중치 설정·음압 요약(Leq/MIN/MAX/순간최고)·시간별 값·사용자가 적은 메모</td>
-            <td data-label="저장 위치">앱 전용 저장소</td>
-            <td data-label="외부 전송">없음</td>
+            <td data-label="내용">측정 시각·길이, 입력 기기 이름과 샘플레이트, 보정값과 측정 중 보정이 바뀐 이력, 가중·응답 속도·Leq 구간 설정, 요약값(Leq·MIN·MAX·순간최고), 시간별 값과 1/3 옥타브 밴드, 구간 전환·기기 전환·끊김 같은 사건, 이용자가 적은 메모</td>
+            <td data-label="저장 위치">앱 전용 저장소 <code>files/sessions/</code></td>
+            <td data-label="앱의 자동 서버 전송">없음 — 이용자가 실행한 공유는 아래 5항 참조</td>
+            <td data-label="보유 종료">이용자가 지울 때까지</td>
+            <td data-label="삭제 방법">기록 화면에서 삭제(기록 폴더를 통째로 지웁니다) · Android 설정의 앱 데이터 삭제 · 앱 제거</td>
           </tr>
           <tr>
             <td data-label="항목">오디오 녹음</td>
-            <td data-label="내용"><strong>기록을 시작할 때마다 물어보고, 사용자가 「소리도 담기」를 고른 경우에만</strong> 저장합니다(m4a 또는 WAV).</td>
-            <td data-label="저장 위치">앱 전용 저장소</td>
-            <td data-label="외부 전송">없음</td>
+            <td data-label="내용"><strong>기록을 시작할 때마다 묻고, 이용자가 「소리도 담기」를 고른 경우에만</strong> 저장합니다. 형식은 그 자리에서 고른 m4a(압축) 또는 WAV(무압축)입니다.</td>
+            <td data-label="저장 위치">해당 기록과 같은 폴더</td>
+            <td data-label="앱의 자동 서버 전송">없음</td>
+            <td data-label="보유 종료">그 기록을 지울 때 함께</td>
+            <td data-label="삭제 방법">기록 삭제 · 앱 데이터 삭제 · 앱 제거</td>
           </tr>
           <tr>
-            <td data-label="항목">보정(Calibration) 설정</td>
-            <td data-label="내용">기기별 보정값, 교정 프로파일, 사용자가 불러온 마이크 주파수 응답 파일</td>
-            <td data-label="저장 위치">앱 전용 저장소</td>
-            <td data-label="외부 전송">없음</td>
+            <td data-label="항목">보정(Calibration)</td>
+            <td data-label="내용">기기·입력별 보정값, 교정 프로파일, 이용자가 불러온 마이크 주파수 응답 파일의 <strong>내용 사본</strong>과 파일 이름</td>
+            <td data-label="저장 위치">앱 전용 저장소 <code>files/profiles/</code>, <code>files/curves/</code></td>
+            <td data-label="앱의 자동 서버 전송">없음</td>
+            <td data-label="보유 종료">이용자가 지우거나 덮어쓸 때까지</td>
+            <td data-label="삭제 방법">설정에서 교체·삭제 · 앱 데이터 삭제 · 앱 제거</td>
           </tr>
           <tr>
             <td data-label="항목">앱 설정</td>
-            <td data-label="내용">가중치·응답 속도·Leq 구간·입력 기기·구간별 권장 범위 등</td>
-            <td data-label="저장 위치">앱 전용 저장소</td>
-            <td data-label="외부 전송">없음</td>
+            <td data-label="내용">가중·응답 속도·Leq 구간·FFT 크기·입력 기기·구간별 권장 범위 등</td>
+            <td data-label="저장 위치">앱 전용 저장소(설정 파일)</td>
+            <td data-label="앱의 자동 서버 전송">없음</td>
+            <td data-label="보유 종료">앱 데이터를 지우거나 앱을 제거할 때까지</td>
+            <td data-label="삭제 방법">Android 설정의 앱 데이터 삭제 · 앱 제거</td>
           </tr>
           <tr>
-            <td data-label="항목">내보내기 파일</td>
-            <td data-label="내용">사용자가 공유를 누를 때 CSV를 임시로 만듭니다.</td>
-            <td data-label="저장 위치">앱 전용 캐시</td>
-            <td data-label="외부 전송">사용자가 고른 앱으로만</td>
+            <td data-label="항목">내보내기 CSV</td>
+            <td data-label="내용">이용자가 「보내기」를 누를 때 그 기록을 CSV로 만들어 둡니다. 같은 기록을 다시 보내면 같은 이름으로 덮어씁니다.</td>
+            <td data-label="저장 위치">앱 전용 캐시 <code>cache/export/</code></td>
+            <td data-label="앱의 자동 서버 전송">없음 — 이용자가 고른 앱으로 전달</td>
+            <td data-label="보유 종료"><strong>앱이 스스로 지우지는 않습니다.</strong> 저장 공간이 부족할 때 Android가 캐시를 정리합니다.</td>
+            <td data-label="삭제 방법">Android 설정의 캐시 삭제 · 앱 데이터 삭제 · 앱 제거</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <p>
-      위 데이터는 모두 <strong>앱 전용 저장소</strong>에 있습니다. 다른 앱이
-      읽을 수 없고, <strong>앱을 삭제하면 함께 지워집니다.</strong>
+      앱 전용 저장소의 데이터는 Android의 앱별 접근 제한을 받습니다. 다만
+      이용자가 공유를 실행한 경우에는 그때 고른 앱에 해당 파일에 대한 접근이
+      허용됩니다. 앱 안의 삭제 기능 또는 Android의 앱 데이터 삭제·앱 제거로
+      그 기기의 앱 전용 데이터를 지울 수 있습니다. <strong>따로 내보낸 파일과
+      공유 상대가 보관한 사본은 별도로 관리·삭제해야 합니다.</strong>
+    </p>
+    <p class="small muted">
+      삭제는 파일을 지우는 동작입니다. 저장장치에서 복구가 불가능하도록
+      덮어쓰는 기능은 제공하지 않습니다.
     </p>
 
-    <h2>4. 데이터 공유</h2>
+    <h2 id="share">5. 내보내기와 공유</h2>
     <p>
-      앱은 스스로 데이터를 보내지 않습니다. 사용자가 기록 화면에서
-      <strong>「보내기」를 직접 누른 경우에만</strong> 안드로이드의 공유 기능이
-      열리며, 받을 앱(메신저·메일·파일 관리자 등)은 사용자가 그 자리에서
-      고릅니다. 그 이후의 처리는 사용자가 고른 앱의 정책을 따릅니다.
+      기록 화면에서 <strong>「보내기」를 직접 누른 경우에만</strong> Android의
+      공유 기능이 열리고, 받을 앱(메신저·메일·파일 관리자 등)은 이용자가 그
+      자리에서 고릅니다. 이때 전달되는 것은 다음과 같습니다.
+    </p>
+    <ul>
+      <li><strong>CSV</strong> — 머리말에 측정 시각·길이, 입력 기기 이름,
+        보정 상태, 측정 조건, 주의 사항, <strong>이용자가 적은 메모</strong>가
+        들어갑니다. 표에는 시각·경과 시간·구간·기기·보정·가중·현재값·Leq·
+        MAX·순간최고와 1/3 옥타브 31개 밴드 값이, 끝에는 사건 목록이
+        들어갑니다.</li>
+      <li><strong>오디오 파일</strong> — 그 기록에 소리를 담았다면 CSV와 함께
+        보냅니다(「소리만 보내기」도 있습니다). <strong>녹음된 소리가 그대로
+        들어 있습니다.</strong> 보내기 전에 무엇이 담겼는지 확인해 주십시오.</li>
+    </ul>
+    <p>
+      파일은 Android의 FileProvider로 건네며, 보낼 때 <strong>그 파일에만</strong>
+      읽기 권한을 줍니다. 받는 앱이 다른 기록까지 열어 볼 수는 없습니다.
+      전달된 뒤 수신 앱·서비스의 저장·이용에는 그 서비스의 정책이 적용됩니다.
+      JOAWORKS는 앱이 파일을 만들고 건네는 과정에서 자신에게 적용되는 보호
+      의무를 부담합니다.
     </p>
 
-    <h2>5. 하지 않는 것</h2>
+    <h2 id="backup">6. 백업 및 기기 이전</h2>
+    <p>
+      JOAWORKS는 앱 데이터의 자체 클라우드 저장 서비스를 제공하지 않습니다.
+    </p>
+    <p>
+      이 방침이 적용되는 버전은 <code>android:allowBackup="false"</code>로
+      설정되어 있어, <strong>Android 자동 백업과 기기 이전에서 앱 전용
+      데이터(측정 기록·녹음·보정·설정)를 제외</strong>합니다. 별도의 백업 규칙
+      파일이나 백업 에이전트는 두지 않았습니다.
+    </p>
+    <div class="note">
+      <p class="small">
+        이 안내는 <strong>앱이 제어하는 백업 설정</strong>에 관한 것입니다.
+        제조사가 제공하는 기기 이전 도구에서의 실제 동작은 실기기로 확인하지
+        않았습니다. 또한 이용자가 직접 내보내거나 다른 앱에 전달한 사본까지
+        삭제하거나 통제하는 기능은 아닙니다.
+      </p>
+      <p class="small">
+        <strong>폰을 바꾸면 기록이 따라가지 않습니다.</strong> 남겨야 할 기록은
+        내보내기로 미리 저장해 두십시오.
+      </p>
+    </div>
+
+    <h2 id="not-doing">7. 앱이 하지 않는 것</h2>
     <ul>
-      <li>서버 전송 — <strong>인터넷 권한이 없어 불가능합니다</strong></li>
       <li>광고 및 광고 식별자 수집</li>
       <li>사용 통계(Analytics) 수집</li>
       <li>비정상 종료(Crash) 보고 수집</li>
-      <li>제3자 SDK를 통한 데이터 수집</li>
-      <li>클라우드 저장·백업</li>
-      <li>쿠키 및 웹 추적</li>
+      <li>로그인·계정 생성</li>
       <li>개인정보의 판매 또는 제3자 제공</li>
     </ul>
-
-    <h2>6. 결제 및 구독</h2>
-    <p>
-      현재 SELAH RTA에는 결제·구독 기능이 없습니다. 향후 도입할 경우
-      이 방침과 <a href="../terms/">이용약관</a>을 먼저 갱신하고, 앱 내에
-      변경 사실을 안내합니다.
+    <p class="small muted">
+      근거: 이 버전의 release 실행 의존성은 AndroidX·Compose·Kotlin 표준
+      라이브러리와 이 앱의 신호처리 모듈뿐이며, 분석·광고·오류보고 SDK가
+      들어 있지 않습니다. 앱은 진단 기록을 파일이나 서버에 남기지 않습니다
+      (개발 중 확인용 기록은 기기 안의 Logcat에만 남고 재부팅하면 사라집니다).
+    </p>
+    <p class="small muted">
+      앱을 스토어에 게시하면 스토어가 제공하는 플랫폼 진단(예: Android
+      vitals)을 개발자가 볼 수 있게 됩니다. 이는 앱에 내장된 오류보고 SDK와
+      다른 것이며, 게시 시점에 실제로 열람할 수 있는 항목을 이 방침에
+      반영합니다.
     </p>
 
-    <h2>7. 아동의 개인정보</h2>
+    <h2 id="support">8. 고객지원 이메일</h2>
     <p>
-      앱은 개인정보를 수집하지 않으므로 아동의 개인정보도 수집하지 않습니다.
+      이용자가 고객지원 이메일로 문의하면 JOAWORKS는 회신 주소, 문의 내용 및
+      이용자가 보낸 첨부자료를 문의 대응을 위해 처리합니다.
+      <strong>목적에 필요한 최소한의 정보만 보내 주십시오</strong> — 녹음
+      파일에는 다른 사람의 목소리가 들어 있을 수 있습니다.
     </p>
 
-    <h2>8. 사용자의 권리</h2>
-    <p>
-      모든 데이터가 기기 안에만 있으므로, 사용자는 언제든 앱 안에서 기록을
-      삭제하거나 앱을 삭제하여 전부 지울 수 있습니다. JOAWORKS는 해당
-      데이터에 접근할 수 없습니다.
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>구분</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="구분">처리 항목</td>
+            <td data-label="내용">보내신 이메일 주소, 문의 본문, 이용자가 첨부한 파일(측정 CSV·녹음 파일 등)</td>
+          </tr>
+          <tr>
+            <td data-label="구분">처리 목적</td>
+            <td data-label="내용">문의 답변, 오류 원인 확인과 수정</td>
+          </tr>
+          <tr>
+            <td data-label="구분">처리 근거</td>
+            <td data-label="내용">이용자의 요청에 따른 조치로서, 문의에 답하는 데 필요한 범위(개인정보 보호법 제15조)</td>
+          </tr>
+          <tr>
+            <td data-label="구분">보유·파기</td>
+            <td data-label="내용">문의 처리가 끝나면 삭제하는 것을 원칙으로 하며, 같은 문제의 재발 확인이 필요한 경우에도 <strong>1년</strong>을 넘기지 않고 메일함에서 삭제합니다. 첨부된 녹음·측정 파일은 원인 확인이 끝나는 즉시 삭제합니다.</td>
+          </tr>
+          <tr>
+            <td data-label="구분">위탁</td>
+            <td data-label="내용">문의 메일은 하이웍스(Hiworks) 메일 서비스를 통해 주고받고 보관합니다. 해당 서비스의 개인정보 처리에는 제공자의 정책이 함께 적용됩니다.</td>
+          </tr>
+          <tr>
+            <td data-label="구분">권리 행사</td>
+            <td data-label="내용">JOAWORKS가 보유한 정보의 열람·정정·삭제·처리정지는 아래 문의 연락처로 요청할 수 있습니다. 법령상 제한 사유가 있으면 그 사유를 알려 드립니다.</td>
+          </tr>
+          <tr>
+            <td data-label="구분">안전조치</td>
+            <td data-label="내용">문의 메일함은 사업자 본인만 접근하며, 보유기간이 지난 문의와 첨부파일은 메일함에서 삭제합니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="small muted">
+      기기 안에만 저장된 데이터는 JOAWORKS가 원격으로 열람하거나 삭제할 수
+      없습니다. 앱과 기기의 삭제 기능을 이용해 주십시오.
     </p>
 
-    <h2>9. 방침 변경</h2>
+    <h2 id="website">9. 홈페이지 운영</h2>
     <p>
-      이 방침이 바뀌면 이 페이지에 게시하고 최종 수정일을 갱신합니다.
+      이 홈페이지(<code>joaworks.com</code>)는 GitHub Pages에서 정적 파일로
+      제공됩니다. 방문자가 페이지를 열면 호스팅 제공자(GitHub)의 서버에
+      접속 기록(IP 주소, 요청한 주소, 브라우저 정보 등)이 남을 수 있으며,
+      이는 제공자가 자사 정책에 따라 처리합니다. JOAWORKS는 이 접속 기록을
+      따로 수집하거나 열람하지 않습니다.
+    </p>
+    <p>
+      홈페이지에는 광고·분석 스크립트, 외부 글꼴, 쿠키를 심지 않았습니다.
+      로그인 기능과 입력 양식도 없습니다.
     </p>
 
-    <h2>10. 문의</h2>
+    <h2 id="billing">10. 결제 및 구독</h2>
     <p>
-      JOAWORKS<br>
+      현재 SELAH RTA에는 앱 내 결제·구독 기능이 없습니다(release 의존성에
+      결제 라이브러리가 없고, 결제 권한도 선언되어 있지 않습니다). 도입할
+      때에는 이 방침과 <a href="../terms/">이용약관</a>, 스토어의 데이터 보안
+      신고 및 앱 설명을 함께 갱신하고, 결제 과정에서 결제 사업자가 처리하는
+      정보와 JOAWORKS가 처리하는 정보를 구분하여 적습니다.
+    </p>
+
+    <h2 id="children">11. 아동의 개인정보</h2>
+    <p>
+      아동의 개인정보에도 이 방침이 적용됩니다. 아동의 개인정보를 동의에
+      근거하여 처리하는 등 법령상 법정대리인의 동의가 필요한 경우에는 적법한
+      동의·확인 절차를 마련한 후 처리합니다. 문의 과정에서 불필요한 아동
+      개인정보를 보내지 않도록 안내합니다.
+    </p>
+    <p class="small muted">
+      앱은 음향 담당자를 위한 도구이며 아동을 대상으로 하지 않습니다. 스토어에
+      게시할 때 타겟층 설정을 이 방침과 맞춥니다.
+    </p>
+
+    <h2 id="rights">12. 이용자의 권리</h2>
+    <p>
+      <strong>기기 안의 데이터</strong>는 이용자가 직접 지울 수 있습니다.
+      기록 화면에서 기록을 지우면 그 기록의 값·타임라인·녹음 파일이 폴더째
+      사라집니다. <strong>기록 삭제와 설정·보정값 삭제는 다른 기능입니다</strong>
+      — 기록을 모두 지워도 보정값과 앱 설정은 남습니다. 그것까지 지우려면
+      Android 설정의 앱 데이터 삭제 또는 앱 제거를 쓰십시오.
+    </p>
+    <p>
+      <strong>JOAWORKS가 보유한 정보</strong>(문의 메일과 첨부자료)에 대한
+      열람·정정·삭제·처리정지 요청과 고충 처리는 아래 연락처로 접수합니다.
+    </p>
+
+    <h2 id="changes">13. 방침의 변경</h2>
+    <p>
+      이 방침을 변경할 때에는 개정일과 시행일을 함께 적어 이 페이지에
+      게시합니다. 이용자에게 중요한 변경은 시행 전에 안내하며, 새로운 동의가
+      필요한 처리는 게시만으로 시행하지 않습니다. 이전 버전은
+      <a href="https://github.com/janghorse-boop/joaworks-website/commits/main/privacy/index.html">홈페이지 저장소의 변경 이력</a>에서
+      볼 수 있습니다.
+    </p>
+    <p class="small muted">
+      버전 1.0(2026-09-28 최초 게시)은 이 1.1 개정으로 대체되었습니다.
+    </p>
+
+    <h2 id="contact">14. 문의</h2>
+    <p>
+      JOAWORKS (조아웍스)<br>
+      개인정보 보호 업무 담당: JOAWORKS(아래 이메일로 접수)<br>
       <a href="mailto:janghun@joaworks.com">janghun@joaworks.com</a>
     </p>
 
