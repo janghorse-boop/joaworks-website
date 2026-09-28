@@ -25,7 +25,7 @@ setup.mjs           도메인·이메일을 채워 넣는 도구
 
 ## 처음 한 번 — 도메인과 이메일 넣기
 
-곳곳에 `DOMAIN_PLACEHOLDER` 와 `EMAIL_PLACEHOLDER` 가 심어져 있다.
+곳곳에 `joaworks.com` 와 `janghun@joaworks.com` 가 심어져 있다.
 **손으로 고치지 말 것** — `canonical`·`og:url`·`mailto` 는 눈에 잘 띄지
 않아 한두 군데를 빠뜨린다.
 
