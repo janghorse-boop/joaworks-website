@@ -114,6 +114,26 @@ main { padding: 40px 0 64px; }
   text-wrap: balance;
 }
 
+/*
+ * 로고를 글자 대신 쓰는 h1.
+ *
+ * 폭이 아니라 **높이**로 잡는다 — 로고는 가로로 긴 그림이라 폭으로
+ * 잡으면 좁은 화면에서 글자가 실낱처럼 가늘어진다. 아래 한 줄
+ * (IDEAS FOR A BETTER TOMORROW)이 로고 높이의 1/8 이라, 이만큼은
+ * 있어야 글자로 읽힌다. 폰에서는 화면 폭에 막히게 둔다.
+ */
+/* `.hero h1` 보다 세야 그 글자용 여백·행간을 덮는다. */
+.hero h1.hero-logo {
+  margin: 0 0 18px;
+  line-height: 0;
+}
+
+.hero h1.hero-logo img {
+  height: clamp(52px, 11vw, 84px);
+  width: auto;
+  max-width: 100%;
+}
+
 .hero p.lead {
   font-size: clamp(16px, 2.6vw, 19px);
   color: var(--text-2);

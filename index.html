@@ -10,7 +10,7 @@
 <meta property="og:description" content="JOAWORKS develops mobile applications, audio measurement software, AI software and web services.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://joaworks.com/">
-<link rel="stylesheet" href="assets/css/site.css?v=20260928b">
+<link rel="stylesheet" href="assets/css/site.css?v=20260928c">
 </head>
 <body>
 
@@ -30,7 +30,26 @@
   <div class="wrap">
 
     <section class="hero">
-      <h1>JOAWORKS</h1>
+      <!--
+        글자 대신 로고를 쓴다. 로고 안에 「JOAWORKS」 가 들어 있으므로
+        h1 은 그대로 두고 그 안에 그림을 넣는다 — 화면 낭독기와 검색엔진은
+        alt 를 읽는다.
+
+        **두 벌인 까닭**: 받은 로고는 흰 바탕에 짙은 「JOA」 다. 이 사이트는
+        어두운 쪽이 기본이라 그대로 쓰면 글자가 묻힌다. 밝은 화면을 쓰는
+        사람에게는 원래 색 그대로 보여 준다.
+      -->
+      <h1 class="hero-logo">
+        <picture>
+          <source
+            media="(prefers-color-scheme: light)"
+            srcset="assets/img/joaworks-logo-light.png">
+          <img
+            src="assets/img/joaworks-logo-dark.png"
+            alt="JOAWORKS"
+            width="900" height="169">
+        </picture>
+      </h1>
       <p class="lead">Software for Better Work &amp; Better Experience</p>
     </section>
 
