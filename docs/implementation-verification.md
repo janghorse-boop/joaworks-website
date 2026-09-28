@@ -44,8 +44,8 @@
 | C09 | 보정 | 확인됨 | `calibration/ProfileStore.kt` → `files/profiles`, `calibration/CurveStore.kt` → `files/curves`. 응답 파일은 **URI 참조가 아니라 내용을 복사해** 저장하고 파일 이름을 함께 남긴다(`save(key, fileName, text)`) |
 | C10 | CSV·공유 | 확인됨 | `res/xml/file_paths.xml` 이 여는 것은 `cache-path export/` 와 `files-path sessions/` 둘뿐. `ui/CaptureViewModel.kt exportSession()` 이 CSV 를 `cache/export/` 에 쓰고, **그 기록에 소리가 있으면 CSV 와 오디오를 함께** 공유에 올린다. 읽기 권한은 올린 파일에만 간다. 방침의 「내보내기 = CSV」 설명이 좁았으므로 오디오를 함께 적었다 |
 | C11 | 삭제 | 확인됨 | `recording/SessionStore.delete(id)` 가 기록 폴더를 `deleteRecursively()` 한다 — 겉장·타임라인·오디오가 함께 사라진다. **`cache/export/` 의 CSV 와 보정·설정은 지워지지 않는다.** 방침에 그 구분과 각각의 삭제 방법을 적었다. 복구 불가능한 덮어쓰기는 제공하지 않으며, 그렇게 쓰지 않았다 |
-| C12 | 백업 | **불일치 → 앱 고침** | 이전에는 `allowBackup` 선언이 없어 기본값 `true` 였고, 그 상태에서 앱은 「폰 안에만 두고, 기록을 지우면 함께 사라집니다」라고 말하고 있었다. `a307592`(PR #34)에서 `android:allowBackup="false"` 로 바꾸고 `ManifestPromisesTest` 로 고정했다. 병합본에 `dataExtractionRules`·`fullBackupContent`·`backupAgent` 없음 |
-| C13 | 기기 이전 | **미확인** | `allowBackup="false"` 는 cloud-backup 과 device-transfer 를 함께 끈다는 것이 Android 문서의 설명이지만, **제조사 이전 도구(예: Smart Switch)에서의 실제 동작을 기기로 확인하지 않았다.** 방침에도 미확인으로 적었다 |
+| C12 | 백업 | **불일치 → 앱 고침** | 이전에는 `allowBackup` 선언이 없어 기본값 `true` 였고, 그 상태에서 앱은 「폰 안에만 두고, 기록을 지우면 함께 사라집니다」라고 말하고 있었다. `a307592`(PR #34)에서 `android:allowBackup="false"` 로 바꾸고 `ManifestPromisesTest` 로 고정했다. 그 뒤 UIS-01 로 `dataExtractionRules` 를 더했다(아래 C13). 병합본에 `fullBackupContent`·`backupAgent` 는 없음 |
+| C13 | 기기 이전 | **틀렸음 → 앱 고침** | 「`allowBackup="false"` 가 device-transfer 까지 끈다」고 적었으나 **그것이 사실이 아니다**(독립 검토 UIS-01). [Android 12 동작 변경](https://developer.android.com/about/versions/12/behavior-changes-12#backup-restore)에 따르면 targetSdk 31 이상에서 그 속성은 클라우드 백업만 끈다. `dataExtractionRules` 를 추가해 cloud-backup·device-transfer 양쪽에서 저장 영역 아홉 가지를 제외했고, release 병합 매니페스트에서 확인했다. **제조사 이전 도구(예: Smart Switch)에서의 실제 동작은 여전히 기기로 확인하지 않았다** |
 | C14 | SDK | 확인됨 | `releaseRuntimeClasspath` 에 AndroidX·Compose·Kotlin 표준 라이브러리와 `project :dsp` 만 있다. Firebase·Crashlytics·Analytics·Sentry·광고·AD_ID 없음 |
 | C15 | 진단·로그 | 확인됨 | `android.util.Log` 만 쓴다(Logcat, 기기 안·휘발). 파일 로그·서버 로그·자동 전송 없음. `printStackTrace`·파일 기록 없음. **Play Console 의 플랫폼 진단은 게시 후에야 생기므로 미확인**이며, 방침에 그 구분을 적었다 |
 | C16 | 현재 Billing | 확인됨 | Billing 라이브러리 의존 없음, `com.android.vending.BILLING` 권한 없음, 구매 UI·상품 정의 없음 |
@@ -60,7 +60,7 @@
 | 「모든 데이터는 기기 안에만 저장됩니다」(meta description) | 「기기에서 처리하며 JOAWORKS 서버로 자동 전송하지 않습니다」 | 위와 같다 |
 | 「위 네 가지가 권한의 전부」 | 다섯 줄 표 + 「버전이 바뀌면 함께 갱신」 | C02 |
 | 「다른 앱이 읽을 수 없고, 앱을 삭제하면 함께 지워집니다」 | 앱별 접근 제한 + 공유 시 예외 + 내보낸 사본은 따로 | C10·C11 |
-| 「클라우드 저장·백업」을 한 줄로 부정 | 자체 클라우드 없음 / `allowBackup="false"` / 제조사 이전은 미확인 | C12·C13 |
+| 「클라우드 저장·백업」을 한 줄로 부정 | 자체 클라우드 없음 / `allowBackup="false"` + `dataExtractionRules` 로 백업·이전 모두 제외 / 제조사 이전 도구의 실제 동작은 미확인 | C12·C13 |
 | 내보내기 = CSV | CSV + 오디오(있으면 함께) | C10 |
 | 「캐시라 즉시 사라짐」 | 「앱이 스스로 지우지 않는다 — Android 가 정리하거나 이용자가 지운다」 | C10. 정리 코드가 없다 |
 | 「개인정보를 수집하지 않습니다」 | 앱이 처리하는 것(마이크·녹음·메모)을 먼저 적고, 서버 자동 전송이 없다고 적음 | 녹음·메모에 개인정보가 들어갈 수 있다 |
