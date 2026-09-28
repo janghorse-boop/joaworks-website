@@ -14,24 +14,27 @@
 import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 
-const [domain, email] = process.argv.slice(2);
+const argv = process.argv.slice(2);
+const isReplace = argv[0] === "--replace";
+const [domain, email] = isReplace ? [null, null] : argv;
 
-if (!domain || !email) {
+if (!isReplace && (!domain || !email)) {
   console.error("쓰는 법: node setup.mjs <도메인> <이메일>");
+  console.error("  또는: node setup.mjs --replace <옛 값> <새 값>");
   console.error("  예)   node setup.mjs joaworks.co.kr contact@joaworks.co.kr");
   process.exit(1);
 }
 
 // 흔한 실수를 먼저 막는다 — https:// 를 붙여 넣으면 주소가 두 겹이 된다.
-if (/^https?:\/\//i.test(domain)) {
+if (!isReplace && /^https?:\/\//i.test(domain)) {
   console.error(`도메인에 http(s):// 를 빼고 적으십시오: ${domain}`);
   process.exit(1);
 }
-if (domain.endsWith("/")) {
+if (!isReplace && domain.endsWith("/")) {
   console.error(`도메인 끝의 / 를 빼십시오: ${domain}`);
   process.exit(1);
 }
-if (!email.includes("@")) {
+if (!isReplace && !email.includes("@")) {
   console.error(`이메일이 아닌 것 같습니다: ${email}`);
   process.exit(1);
 }
@@ -47,6 +50,41 @@ function walk(dir) {
     else if (EXT.has(extname(name))) out.push(p);
   }
   return out;
+}
+
+// ── 값 하나만 바꾸는 모드 ────────────────────────────────
+//
+// 자리표는 처음 한 번만 쓰인다. 그 뒤에 메일 주소 같은 값을 바꾸려면
+// 이쪽을 쓴다 — `mailto:` 는 페이지마다 두 군데(본문·바닥)에 있고
+// 6개 파일에 흩어져 있어, 손으로 고치면 꼭 한두 군데를 빠뜨린다.
+//
+// **CNAME·sitemap·robots 는 건드리지 않는다.** 저것들은 도메인의
+// 것이고, 여기서 바꾸는 것은 보통 도메인이 아니다.
+if (isReplace) {
+  const [, from, to] = argv;
+  if (!from || !to) {
+    console.error("쓰는 법: node setup.mjs --replace <옛 값> <새 값>");
+    console.error("  예)   node setup.mjs --replace janghun@joaworks.com support@joaworks.com");
+    process.exit(1);
+  }
+  let hits = 0;
+  const where = [];
+  for (const file of walk(".")) {
+    const before = readFileSync(file, "utf8");
+    if (!before.includes(from)) continue;
+    // 몇 군데였는지 세어 둔다 — 「한 군데만 바뀌었나」를 눈으로 본다.
+    const n = before.split(from).length - 1;
+    writeFileSync(file, before.replaceAll(from, to), "utf8");
+    where.push(`${file} (${n}곳)`);
+    hits += n;
+  }
+  if (hits === 0) {
+    console.error(`「${from}」 을 어디서도 못 찾았습니다. 값이 맞습니까?`);
+    process.exit(1);
+  }
+  where.forEach((w) => console.log("고침  " + w));
+  console.log(`\n${hits}곳을 바꿨습니다.`);
+  process.exit(0);
 }
 
 let changed = 0;
