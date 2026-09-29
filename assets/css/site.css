@@ -138,10 +138,29 @@ main { padding: 40px 0 64px; }
   line-height: 0;
 }
 
+/*
+  **폭으로 잡고 높이는 따라오게 한다.** 높이를 고정하면 판마다 여백이
+  달라 로고가 서로 다른 크기로 보인다.
+*/
 .hero h1.hero-logo img {
-  height: clamp(52px, 11vw, 84px);
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* 어두운 바탕용 판 — 여백 없이 로고만 들어 있다. */
+  max-width: 680px;
+}
+
+/*
+  **밝은 바탕에는 고해상도 원본을 쓴다**(2073×758).
+
+  그 원본은 로고 둘레에 여백이 있어, 내용이 가로의 **81.9%** 다(실측:
+  내용 1697px / 전체 2073px). 같은 `max-width` 를 주면 로고가 어두운 쪽보다
+  작아 보이므로 그만큼 넓게 잡는다 — 680 ÷ 0.819 ≈ 830.
+
+  **이미지는 손대지 않는다.** 여백을 잘라 내면 받은 원본이 아니게 된다.
+*/
+@media (prefers-color-scheme: light) {
+  .hero h1.hero-logo img { max-width: 830px; }
 }
 
 .hero p.lead {
@@ -158,6 +177,34 @@ h2 {
 }
 
 h3 { font-size: 17px; margin: 24px 0 8px; }
+
+/*
+  **되풀이되는 여백은 규칙으로 둔다**(지시서 12장).
+
+  인라인 `style` 로 여백을 주면 같은 단계의 제목·덩어리가 자리마다 다른
+  간격을 갖게 되고, 그 어긋남은 고칠 자리가 흩어져 있어 잘 안 고쳐진다.
+*/
+.grid, .card { margin-top: 18px; }
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+
+/* 장을 닫는 덩어리 — 본문에서 한 칸 더 떨어뜨린다. */
+.closing { margin-top: 22px; text-align: center; }
+.closing > p { margin: 0; max-width: none; }
+.closing > p + p { margin-top: 6px; }
+
+/*
+  브랜드 장의 로고. 히어로와 같은 판을 쓰되 조금 작게 둔다.
+  여백이 있는 원본이라 밝은 쪽에서 더 넓게 잡는 것도 같다.
+*/
+.brand-mark { margin: 18px 0; max-width: none; }
+.brand-mark img { width: 100%; height: auto; max-width: 520px; display: block; }
+@media (prefers-color-scheme: light) {
+  .brand-mark img { max-width: 635px; }
+}
+
+/* 제품 카드의 이름 — 본문 h3 보다 크게. */
+.card-title { font-size: 20px; }
 
 p { margin: 0 0 14px; max-width: 72ch; }
 
