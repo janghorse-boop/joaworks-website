@@ -58,6 +58,16 @@ body {
 
 /* ── 머리 ───────────────────────────────────────── */
 
+/*
+  앵커로 뛸 때 **고정 머리말이 첫 줄을 덮지 않게** 한다.
+
+  머리말은 `position: sticky` 라 늘 위에 떠 있다. `#about` 이나 `#brand`
+  로 뛰면 그 제목이 머리말 뒤로 들어가, 읽으려던 첫 줄이 가려진다.
+
+  머리말 높이(60px)에 숨 쉴 틈을 더해 잡는다.
+*/
+section[id] { scroll-margin-top: 76px; }
+
 header.site {
   border-bottom: 1px solid var(--line);
   background: var(--bg);
